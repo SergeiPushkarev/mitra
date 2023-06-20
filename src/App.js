@@ -1,10 +1,16 @@
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MyNavbar from './components/UI/MyNavbar';
+
 
 function App() {
   return (
-    <div className="App">
-      ghbdtn
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MyNavbar/>}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
