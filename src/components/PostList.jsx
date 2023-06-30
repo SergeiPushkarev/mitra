@@ -7,7 +7,7 @@ const PostList = ({posts}) => {
         Посты не найдены!
       </h1>)
       } else  return (
-    <div>
+    <div style = {{alignItems:'center'}}>
         {posts.map((e)=>
             <PostItem props={e} key={e.id}/>
         )}
