@@ -7,7 +7,7 @@ const sagaMdw = createSagaMiddleware()
 
 export const store = configureStore({
     reducer:{
-        posts:PostReducer,
+        posts: PostReducer,
     },
     middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMdw)
 })
