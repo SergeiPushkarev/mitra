@@ -4,6 +4,7 @@ import PostList from '../components/PostList'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostsAction } from '../store/PostsReducer';
 import Loader from '../components/UI/Loader'
+import SearchPost from '../components/UI/SearchPost';
 
 
 const Posts = () => {
@@ -14,10 +15,12 @@ const Posts = () => {
         dispatch(fetchPostsAction())
     }, [dispatch])
   return (
-    <Container className="d-flex justify-content-center">
+    <Container className="d-flex flex-column justify-content-center" style={{ maxWidth: '900px' }}>
+        <SearchPost/>
         {isLoading
         ? <Loader/>
-        : <PostList posts={posts}/>} 
+        : <PostList posts={posts}/>
+        } 
     </Container>
   )
 }

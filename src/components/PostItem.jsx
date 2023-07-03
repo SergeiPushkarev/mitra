@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 const PostItem = ({props}) => {
   return (
-    <Card className="w-auto m-2 p-3" style={{ maxWidth: '900px' }}>
+    <Card className="w-auto my-2 p-3">
       <Card.Body>
         <Card.Title className='fs-5'>{props.title}</Card.Title>
         <Card.Text className='fs-6'>
