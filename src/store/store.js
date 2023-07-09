@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { PostReducer } from "./PostsReducer";
 import createSagaMiddleware from "redux-saga";
-import { fetchPostsWatcher } from "../sagas/PostSaga";
+import { rootSaga } from "../sagas/PostSaga";
 
 const sagaMdw = createSagaMiddleware()
 
@@ -12,4 +12,4 @@ export const store = configureStore({
     middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMdw)
 })
 
-sagaMdw.run(fetchPostsWatcher)
+sagaMdw.run(rootSaga)
