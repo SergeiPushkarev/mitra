@@ -2,10 +2,11 @@ import { call, put, delay, select, all, fork} from "redux-saga/effects";
 import API from "../API/PostService";
 import { setPostsAction, hideLoader, showLoader, setTotalPagesAction } from "../store/PostsReducer";
 
+
 function* getPostsWorker() {
     yield put (showLoader())
     yield delay(3000)
-    const page = yield select(s => s.posts.page)
+    const page = yield select(s => s.posts.pageActive)
     const limit = yield select(s => s.posts.limit)
     const posts = yield call(API.getLimitPosts, limit,page)
     yield put(setPostsAction(posts.data))
@@ -15,7 +16,7 @@ function* getPostsWorker() {
 function* setTotalPageWorker() {
     yield put (showLoader())
     yield delay(3000)
-    const page = yield select(s => s.posts.page)
+    const page = yield select(s => s.posts.pageActive)
     const limit = yield select(s => s.posts.limit)
     const posts = yield call(API.getLimitPosts, limit,page)
     const totalPages = yield call(()=> Math.ceil(posts.headers['x-total-count']/limit))

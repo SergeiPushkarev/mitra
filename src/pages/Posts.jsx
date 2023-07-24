@@ -1,19 +1,18 @@
-import React, { useEffect, useMemo, useState} from 'react'
-import { Container } from 'react-bootstrap'
+import React, { useMemo, useState} from 'react'
+import { Container, Pagination } from 'react-bootstrap'
 import PostList from '../components/PostList'
-import { useDispatch, useSelector } from 'react-redux';
-import { getPostsAction } from '../store/PostsReducer';
+import { useSelector } from 'react-redux';
 import Loader from '../components/UI/Loader'
 import SearchPost from '../components/UI/SearchPost';
+import PaginationBar from '../components/UI/PaginationBar';
 
 
 const Posts = () => {
     const posts = useSelector(state => state.posts.posts)
     const isLoading = useSelector(state => state.posts.isLoading)
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(getPostsAction())
-    // }, [dispatch])
+    const totalPages = useSelector(state => state.posts.totalPages)
+    const activePage = useSelector(state => state.posts.page)
+
 
     const [searchQuery, setSearchQuery] = useState('')
 
@@ -30,8 +29,12 @@ const Posts = () => {
         <SearchPost searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         {isLoading
         ? <Loader/>
-        : <PostList posts={visiblePosts}/>
-        } 
+        : <div>
+            <PostList posts={visiblePosts}/>
+            <PaginationBar totalPages={totalPages} activePage={activePage}></PaginationBar>
+        </div>
+        }
+        
     </Container>
   )
 }
