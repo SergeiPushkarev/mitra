@@ -5,17 +5,17 @@ export const usePagination = (activePage, totalPages)=>{
         const showedRange = (start,end)=>{
             let a = []
             if (start === 1) {
-              a = [1,2,3,4]
-            } else if (start >= end-1) {
-              for (let index = end-2; index < end+1; index++) {
+              a = [1,2,3,4,5,6]
+            } else if (start >= end-3) {
+              for (let index = end-4; index < end+1; index++) {
                 a.push(index)}
             } else {for (let index = start; index < end+1; index++) {
               a.push(index)}}
             return a
           }
-          if (totalPages>7){
-            const start = Math.max(1,activePage - 1);
-            const end = Math.min(totalPages-1,activePage + 1);
+          if (totalPages>8){
+            const start = Math.max(1,activePage - 2);
+            const end = Math.min(totalPages-1,activePage+2);
             let range = showedRange(start,end)
             const hasLeftEllipsis = start > 1;
             const hasRightEllipsis = end < totalPages - 1;
