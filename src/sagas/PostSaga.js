@@ -1,9 +1,10 @@
-import { call, put, delay, select, all, fork, takeEvery, take} from "redux-saga/effects";
+import { call, put, delay, select, takeEvery} from "redux-saga/effects";
 import API from "../API/PostService";
-import { setPostsAction, hideLoader, showLoader, setTotalPagesAction, setPageAction } from "../store/PostsReducer";
+import { setPostsAction, setTotalPagesAction, setPageAction } from "../store/PostsReducer";
+import { showLoader, hideLoader } from "../store/LoaderReducer";
 
 
-function* getPostsWorker() {
+export function* getPostsWorker() {
     yield put (showLoader())
     yield delay(3000)
     const page = yield select(s => s.posts.page)
@@ -14,7 +15,7 @@ function* getPostsWorker() {
     return posts
 }
 
-function* setTotalPageWorker(posts) {
+export function* setTotalPageWorker(posts) {
     const limit = yield select(s => s.posts.limit)
     const totalPages = yield call(()=> Math.ceil(posts.headers['x-total-count']/limit))
     yield put (setTotalPagesAction(totalPages))
@@ -25,17 +26,6 @@ function* changePageWorker(page) {
     yield getPostsWorker()
 }
 
-function* changePageWatcher() {
+export function* changePageWatcher() {
     yield takeEvery("CHANGE_PAGE",changePageWorker)
-}
-
-function* startup() {
-    const posts = yield getPostsWorker()
-    yield setTotalPageWorker(posts)
-}
-
-export function* rootSaga() {
-    yield all([fork(startup),
-        fork(changePageWatcher)
-    ])
 }

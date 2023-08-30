@@ -1,10 +1,10 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Container, Form } from 'react-bootstrap'
 
 const SearchPost = ({search,setSearchQuery}) => {
   return (
     <div>
-        <Form.Label>Search</Form.Label>
+      <Form.Label>Search</Form.Label>
         <Form.Control
             value={search}
             className="form-control"

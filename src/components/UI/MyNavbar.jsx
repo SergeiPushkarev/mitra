@@ -32,7 +32,7 @@ export default function MyNavbar() {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-        <Container>
+        <Container style={{ maxWidth: '900px' }}>
           <Outlet/>
         </Container>
       </div>

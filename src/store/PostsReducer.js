@@ -1,9 +1,8 @@
 const defState = {
     posts:[],
     page:1,
-    limit:5,
+    limit:10,
     totalPages: null,
-    isLoading:false,
 }
 
 export const PostReducer = (state=defState, action) =>{
@@ -14,10 +13,6 @@ export const PostReducer = (state=defState, action) =>{
             return {...state, page:action.page}
         case "SET_TOTAL_PAGES":
             return {...state, totalPages:action.totalPages}
-        case 'SHOW_LOADER':
-            return {...state, isLoading:true}
-        case "HIDE_LOADER":
-            return {...state, isLoading:false}
         default:
             return state;
     }
@@ -26,6 +21,4 @@ export const PostReducer = (state=defState, action) =>{
 export const setPostsAction = (posts) =>({type:"SET_POSTS", posts})
 export const setPageAction = (page) =>({type:"SET_PAGE", page})
 export const setTotalPagesAction = (totalPages) =>({type:"SET_TOTAL_PAGES", totalPages})
-export const showLoader=()=>({type:"SHOW_LOADER"})
-export const hideLoader=()=>({type:"HIDE_LOADER"})
 export const changePageAction=(page)=>({type:"CHANGE_PAGE", page})

@@ -9,8 +9,12 @@ export default class API {
         const posts = await axios.get('https://jsonplaceholder.typicode.com/posts', {params:{_limit:limit, _page:page}})
         return posts
     }
-    static async getPostUser (userId) {
-        const users = await axios.get('https://jsonplaceholder.typicode.com/users/', {params:userId})
+    static async getUser (userId) {
+        const users = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId)
         return users
+    }
+    static async getUserPosts (userId) {
+        const userPosts = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId+'/posts')
+        return userPosts
     }
 }
