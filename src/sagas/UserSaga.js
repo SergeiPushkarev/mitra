@@ -5,15 +5,19 @@ import { showLoader, hideLoader } from "../store/LoaderReducer";
 
 function* getUserWorker(id) {
     const user = yield call(API.getUser,id.id)
-    console.log(user);
     yield put(setUserAction(user.data))
 }
 
 function* getUserPostsWorker(userId) {
     yield put (showLoader())
     yield delay(3000)
-    const userPosts = yield call(API.getUserPosts,userId.userId)
-    yield put(setUserPostAction(userPosts.data))
+    try {
+        const userPosts = yield call(API.getUserPosts,userId.userId)
+        yield put(setUserPostAction(userPosts.data))
+    } catch (error) {
+        console.log(error.message);
+        yield put({type:'SET_USERPOSTSERROR', payload:`${error.message}`})
+    }
     yield put (hideLoader())
 }
 

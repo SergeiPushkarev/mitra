@@ -1,6 +1,7 @@
 const defState = {
     user:{},
-    userPosts:[]
+    userPosts:[],
+    userPostsError:"",
 }
 
 export const UserReducer = (state=defState, action) =>{
@@ -9,6 +10,8 @@ export const UserReducer = (state=defState, action) =>{
             return {...state, user:{...action.user}};
         case 'SET_USERPOSTS':
             return {...state, userPosts:[...action.userPosts]}
+        case 'SET_USERPOSTSERROR':
+            return {...state, userPostsError:action.payload}
         default:
             return state;
     }

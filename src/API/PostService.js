@@ -2,19 +2,38 @@ import axios from "axios"
 
 export default class API {
     static async getAllPosts () {
-        const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
-        return posts
+        try {
+            const posts = await axios.get('https://jsonplaceholder.typicode.com/posts')
+            return posts
+        } catch (error) {
+            throw error
+        }
+        
     }
     static async getLimitPosts (limit=10, page=1){
-        const posts = await axios.get('https://jsonplaceholder.typicode.com/posts', {params:{_limit:limit, _page:page}})
-        return posts
+        try {
+            const posts = await axios.get('https://jdsonplaceholder.typicode.com/posts', {params:{_limit:limit, _page:page}})
+            return posts
+        } catch (error) {
+            throw error
+        }
+       
     }
     static async getUser (userId) {
-        const users = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId)
-        return users
+        try {
+            const users = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId)
+            return users
+        } catch (error) {
+            throw error
+        }
+        
     }
     static async getUserPosts (userId) {
-        const userPosts = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId+'/posts')
-        return userPosts
+        try {
+            const userPosts = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId+'/posts')
+            return userPosts
+        } catch (error) {
+            throw error
+        }
     }
 }

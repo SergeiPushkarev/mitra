@@ -13,6 +13,7 @@ const Posts = () => {
     const isLoading = useSelector(state => state.isLoading.isLoading)
     const totalPages = useSelector(state => state.posts.totalPages)
     const activePage = useSelector(state => state.posts.page)
+    const error = useSelector(state=> state.posts.postsError)
     const setActivePage = (page) =>{
         dispatch(changePageAction(page))
     }
@@ -26,14 +27,13 @@ const Posts = () => {
         return searchedPosts
     }
     const visiblePosts = useVisiblePosts(posts,searchQuery)
-    console.log(visiblePosts);
   return (
     <div className="d-flex flex-column justify-content-center">
         <SearchPost searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         {isLoading
         ? <Loader/>
         : <div>
-            <PostList posts={visiblePosts}/>
+            <PostList posts={visiblePosts} error={error}/>
         </div>
         }
         {totalPages>1 && <PaginationBar totalPages={totalPages} activePage={activePage} setActivePage={setActivePage}></PaginationBar>}

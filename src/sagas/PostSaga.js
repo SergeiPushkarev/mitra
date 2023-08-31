@@ -9,10 +9,16 @@ export function* getPostsWorker() {
     yield delay(3000)
     const page = yield select(s => s.posts.page)
     const limit = yield select(s => s.posts.limit)
-    const posts = yield call(API.getLimitPosts, limit,page)
-    yield put(setPostsAction(posts.data))
+    try {
+        const posts = yield call(API.getLimitPosts, limit,page)
+        yield put(setPostsAction(posts.data))
+        yield put (hideLoader())
+        return posts
+    } catch (error) {
+        yield put({type:'SET_POSTSERROR', error:`${error.message}`})
+    }
     yield put (hideLoader())
-    return posts
+    
 }
 
 export function* setTotalPageWorker(posts) {

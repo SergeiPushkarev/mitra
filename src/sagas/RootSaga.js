@@ -4,7 +4,9 @@ import { getUserWatcher } from "./UserSaga";
 
 function* startup() {
     const posts = yield getPostsWorker()
-    yield setTotalPageWorker(posts)
+    if (posts) {
+        yield setTotalPageWorker(posts)
+    }
 }
 
 export function* rootSaga() {

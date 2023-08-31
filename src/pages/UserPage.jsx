@@ -17,6 +17,7 @@ const UserPage = () => {
     const user = useSelector(state=> state.user.user)
     const userPosts = useSelector(state=> state.user.userPosts)
     const isLoading = useSelector(state=> state.isLoading.isLoading)
+    const error = useSelector(state=>state.user.userPostsError)
  return (
     <div>
         <Container>
@@ -49,7 +50,7 @@ const UserPage = () => {
     <div className='py-2'>
         {isLoading
         ? <Loader/>
-        : <PostList posts={userPosts}/>}
+        : <PostList posts={userPosts} error={error}/>}
     </div>
     </div>
   )

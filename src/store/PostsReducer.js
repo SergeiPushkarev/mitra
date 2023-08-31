@@ -1,5 +1,6 @@
 const defState = {
     posts:[],
+    postsError:"",
     page:1,
     limit:10,
     totalPages: null,
@@ -13,6 +14,8 @@ export const PostReducer = (state=defState, action) =>{
             return {...state, page:action.page}
         case "SET_TOTAL_PAGES":
             return {...state, totalPages:action.totalPages}
+        case "SET_POSTSERROR":
+            return {...state, postsError:action.error}
         default:
             return state;
     }

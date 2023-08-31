@@ -2,11 +2,15 @@ import React from 'react'
 import PostItem  from "./PostItem";
 
 
-const PostList = ({posts}) => {
+const PostList = ({posts, error}) => {
     if (!posts.length) {
-        return (<h1 style = {{textAlign:"center"}}>
-        Посты не найдены!
-      </h1>)
+        return (
+        <div style = {{textAlign:"center"}}> 
+          <h1>
+            Посты не найдены!
+          </h1>
+          <h6 style = {{color:"red"}}>{error}</h6>
+        </div>)
       } else  return (
     <div>
         {posts.map((e)=>
