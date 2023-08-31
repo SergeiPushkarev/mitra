@@ -12,7 +12,7 @@ export default class API {
     }
     static async getLimitPosts (limit=10, page=1){
         try {
-            const posts = await axios.get('https://jdsonplaceholder.typicode.com/posts', {params:{_limit:limit, _page:page}})
+            const posts = await axios.get('https://jsonplaceholder.typicode.com/posts', {params:{_limit:limit, _page:page}})
             return posts
         } catch (error) {
             throw error
