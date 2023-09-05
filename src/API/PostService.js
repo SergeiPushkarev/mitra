@@ -21,7 +21,7 @@ export default class API {
     }
     static async getUser (userId) {
         try {
-            const users = await axios.get('https://jsonplaceholder.typicode.com/users/'+userId)
+            const users = await axios.get('https://ddjsonplaceholder.typicode.com/users/'+userId)
             return users
         } catch (error) {
             throw error
