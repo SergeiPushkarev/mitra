@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Col, Image, Row } from 'react-bootstrap'
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import userLogo from '../img/icons8-User.png'
+import Commentaries from "../components/UI/Commentaries";
 
 const PostItem = ({props}) => {
   return (
@@ -23,7 +23,7 @@ const PostItem = ({props}) => {
             {props.body}
           </Card.Text>
         </Row>
-        <Button variant="primary" className="float-end" size="sm">Commentaries</Button>
+        <Commentaries id={props.id}></Commentaries>
       </Card.Body>
     </Card>
   )
