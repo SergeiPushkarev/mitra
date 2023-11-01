@@ -1,32 +1,19 @@
 import React, { useState } from 'react'
-import { Button, Card, Col, Row, Spinner } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
+import { ButtonCom } from './ButtonCom'
 
 const Commentaries = ({id}) => {
     const [comments, setComments] = useState([])
     const [isOpen, setisOpen] = useState(false)
-    const spinnerClass = {opacity: 0}
+    
     const open = () =>{
         setisOpen(!isOpen)
-    }
-    if (isOpen) {
-        spinnerClass.opacity = 1
     }
   return (
     <div>
         <Row>
-        <Col>
-            <Button variant="primary" className="float-end" size="sm" onClick={()=>open()}>
-                Commentaries
-                <div className='d-inline px-2' style={spinnerClass}>
-                <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-                />
-                </div>
-            </Button>
+        <Col className="d-flex justify-content-end">
+            <ButtonCom isLoad={isOpen} click={open}/>
         </Col>
     </Row>
     <Row className='m-2' >
