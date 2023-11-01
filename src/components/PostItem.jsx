@@ -2,10 +2,10 @@ import React from 'react'
 import { Card, Col, Image, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import userLogo from '../img/icons8-User.png'
-import Commentaries from "../components/UI/Commentaries";
+import Commentaries from "../components/Commentaries";
 
 const PostItem = ({props}) => {
-  return (
+   return (
     <Card className="w-auto my-2">
       <Card.Body>
         <Row>

@@ -1,9 +1,11 @@
 import React from 'react'
 import { Button, Spinner } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 
-export const ButtonCom = ({click,isLoad}) => {
+export const ButtonCom = ({click,id}) => {
+    const isLoad = useSelector(state=> state.comm.isLoad)
     const spinnerClass = {opacity: 0}
-    if (isLoad) {
+    if (isLoad === id) {
         spinnerClass.opacity = 1
     }
     return (
