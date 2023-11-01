@@ -36,4 +36,12 @@ export default class API {
             throw error
         }
     }
+    static async getComments (postId) {
+        try {
+            const comments = await axios.get('https://jsonplaceholder.typicode.com/comments?postId='+postId)
+            return comments
+        } catch (error) {
+            throw error
+        }
+    }
 }

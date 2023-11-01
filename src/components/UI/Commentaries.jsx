@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { getComm } from '../../store/CommentReducer'
 import { ButtonCom } from './ButtonCom'
 
 const Commentaries = ({id}) => {
     const [comments, setComments] = useState([])
     const [isOpen, setisOpen] = useState(false)
-    
+    const dispatch = useDispatch()
     const open = () =>{
+        dispatch(getComm(id))
         setisOpen(!isOpen)
     }
   return (
