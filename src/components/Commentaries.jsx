@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { delComm, getComm } from '../store/CommentReducer'
+import { getComm } from '../store/CommentReducer'
 import CommentariesList from './CommentariesList'
 import { ButtonCom } from './UI/ButtonCom'
 
@@ -12,9 +12,6 @@ const Commentaries = ({id}) => {
         dispatch(getComm(id))
         setisOpen(!isOpen)
     }
-    const del = () => {
-        dispatch(delComm(id))
-    }
     console.log('comm rend');
   return (
     <div>
@@ -23,7 +20,6 @@ const Commentaries = ({id}) => {
             <ButtonCom id={id} click={open}/>
         </Col>
     </Row>
-    <ButtonCom id={id} click={del}/>
     <Row className='m-2' >
         {isOpen && <CommentariesList id={id}/>}
     </Row>

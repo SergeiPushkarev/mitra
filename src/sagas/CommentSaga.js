@@ -1,6 +1,6 @@
 import { call, put, delay, takeEvery } from "redux-saga/effects";
 import API from "../API/PostService";
-import { delComm, GET_COMM, loadEnd, loadStart, setComm } from "../store/CommentReducer";
+import { delComm, GET_COMM, loadEnd, loadStart, setComErr, setComm } from "../store/CommentReducer";
 
 function* getCommWorker(id) {
     yield put(loadStart(id.id))
@@ -9,10 +9,10 @@ function* getCommWorker(id) {
     try {
         const comments = yield call(API.getComments, id.id)
         yield put(setComm(comments.data))
-        yield put(loadEnd())
     } catch (error) {
-        
+        yield put(setComErr({id:id.id, error:error.message}))
     }
+    yield put(loadEnd())
 }
 
 export function* getCommWatcher() {
