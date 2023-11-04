@@ -22,7 +22,7 @@ export const CommReducer = (state=defState, action) =>{
         case 'LOAD_END':
             return {...state, isLoad: false}
         case "SET_COMMERR":
-            return {...state, commError:[action.err]}
+            return {...state, commError:[...state.commError, action.err]}
         default:
             return state;
     }
