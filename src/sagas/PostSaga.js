@@ -2,6 +2,7 @@ import { call, put, delay, select, takeEvery} from "redux-saga/effects";
 import API from "../API/PostService";
 import { setPostsAction, setTotalPagesAction, setPageAction } from "../store/PostsReducer";
 import { showLoader, hideLoader } from "../store/LoaderReducer";
+import { clearComm } from "../store/CommentReducer";
 
 
 export function* getPostsWorker() {
@@ -30,6 +31,7 @@ function* changePageWorker(page) {
     yield put(setPageAction(page.page))
     console.log(page.page);
     yield getPostsWorker()
+    yield put(clearComm())
 }
 
 export function* changePageWatcher() {
