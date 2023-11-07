@@ -9,7 +9,7 @@ const Commentaries = ({id}) => {
     const [isOpen, setisOpen] = useState(false)
     const dispatch = useDispatch()
     const open = () =>{
-        dispatch(getComm(id))
+        if (!isOpen) {dispatch(getComm(id))}
         setisOpen(!isOpen)
     }
     console.log('comm rend');

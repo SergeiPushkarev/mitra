@@ -4,8 +4,8 @@ import { delComErr, delComm, GET_COMM, loadEnd, loadStart, setComErr, setComm } 
 
 function* getCommWorker(id) {
     yield put(loadStart(id.id))
-    yield put(delComm(id))
-    yield put(delComErr(id))
+    yield put(delComm(id.id))
+    yield put(delComErr(id.id))
     yield delay(3000)
     try {
         const comments = yield call(API.getComments, id.id)
