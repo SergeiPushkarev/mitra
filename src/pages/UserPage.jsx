@@ -6,6 +6,7 @@ import PostList from '../components/PostList'
 import { getUserAction} from '../store/UserReducer'
 import Loader from '../components/UI/Loader'
 import UserItem from '../components/UserItem'
+import { ButtonBack } from '../components/UI/ButtonBack'
 
 const UserPage = () => {
     const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const UserPage = () => {
     const errorPost = useSelector(state=>state.user.userPostsError)
  return (
     <div>
+        <ButtonBack/>
         <UserItem user={user} error={errorUser}/>
         <div className='py-2'>
             {isLoading
